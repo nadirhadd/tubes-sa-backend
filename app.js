@@ -25,6 +25,7 @@ const Meeting = mongoose.model('Meeting', meetingSchema);
 
 app.get('/meetings', async (req, res) => {
   try {
+    const today = new Date().toISOString().split('T')[0];
     const meetings = await Meeting.find();
     res.json(meetings);
   } catch (err) {
